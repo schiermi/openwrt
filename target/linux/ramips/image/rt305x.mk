@@ -21,6 +21,17 @@ define Build/hilink-header
 	mv $@.new $@
 endef
 
+define Device/bcoda_jak
+  $(Device/uimage-lzma-loader)
+  SOC := rt5350
+  IMAGE_SIZE := 7872k
+  DEVICE_VENDOR := bCODA
+  DEVICE_MODEL := Jak
+  DEVICE_PACKAGES := kmod-usb-dwc2
+  SUPPORTED_DEVICES += jak
+endef
+TARGET_DEVICES += bcoda_jak
+
 define Device/7links_px-4885-4m
   SOC := rt5350
   IMAGE_SIZE := 3776k
@@ -1091,6 +1102,7 @@ endef
 TARGET_DEVICES += unbranded_wr512-3gn-4m
 
 define Device/unbranded_wr512-3gn-8m
+  $(Device/uimage-lzma-loader)
   SOC := rt3052
   IMAGE_SIZE := 7872k
   DEVICE_VENDOR := Ralink
